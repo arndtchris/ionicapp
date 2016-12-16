@@ -1,0 +1,25 @@
+
+<div class="row">
+  <div class="col col-33 col-offset-33"><h1>{{selectedChat.name}}</h1></div>
+</div>
+<div class="card" ng-repeat="message in selectedChat.messages">
+  <div class="item item-divider">
+    {{message.utilisateur}}
+  </div>
+  <div class="item item-text-wrap">
+    {{message.texte}}
+  </div>
+</div>
+
+<ion-footer-bar keyboard-attach class="bar-positive">
+    <form style="width: 100%">
+      <div class="bar bar-header item-input-inset bar-positive">
+        <label class="item-input-wrapper">
+          <input type="search" placeholder="Tapez un message" ng-model="message.texte">
+        </label>
+        <button class="button button-clear" type="submit" ng-click="addMessage(selectedChat.$id,message)">
+          Envoyer
+        </button>
+      </div>
+    <form>
+</ion-footer-bar>
