@@ -25,20 +25,55 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src ="lib/firebase/firebase.js"></script>
+    <script src ="lib/angularfire/dist/angularfire.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBQy_oS35zB70qIqtU_s8KrPu2d3nSBnik",
+          authDomain: "cesichationic.firebaseapp.com",
+          databaseURL: "https://cesichationic.firebaseio.com",
+          storageBucket: "cesichationic.appspot.com",
+          messagingSenderId: "513639023376"
+        };
+        firebase.initializeApp(config);
+    </script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter">
+    <script src="js/chat/chat.module.js"></script>
+    <script src="js/chat/chat.service.js"></script>
+    <script src="js/chat/chat.directive.js"></script>
+    <script src="js/chat/chat.route.js"></script>
+    <script src="js/chat/chat.controller.js"></script>
 
+    <script src="js/auth/auth.module.js"></script>
+    <script src="js/auth/auth.controller.js"></script>
+    <script src="js/auth/auth.route.js"></script>
+    <script src="js/auth/auth.service.js"></script>
+
+    <script src="js/app.module.js"></script>
+  </head>
+  <body ng-app="app">
     <ion-pane>
       <ion-header-bar class="bar-stable">
+        <button class="button button-icon ion-log-in" ui-sref="login()">
+        </button>
         <h1 class="title">Ionic Blank Starter</h1>
+        <div class="buttons">
+        <button ng-controller="editChatController" class="button button-icon ion-plus-circled" ng-click="modal.show()" ui-sref="createChat()">
+        </button>
+
+        
+      </div>
       </ion-header-bar>
       <ion-content>
+        <div ui-view>
+          
+        </div>
       </ion-content>
     </ion-pane>
   </body>
